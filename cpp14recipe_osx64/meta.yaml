@@ -17,8 +17,6 @@ requirements:
     - {{ compiler('cxx') }}
 
   host:
-    - libgcc-ng 7.3.0
-    - libstdcxx-ng 7.3.0
     - icu               # [unix]
     - bzip2             # [unix]
     - xz                # [unix]
