@@ -14,7 +14,7 @@ INCLUDE_PATH="${PREFIX}/include"
 LIBRARY_PATH="${PREFIX}/lib"
 
 # Always build PIC code for enable static linking into other shared libraries
-CXXFLAGS="${CXXFLAGS} -fPIC"
+CXXFLAGS="${CXXFLAGS} -fPIC -std=c++14 -D_GLIBCXX_USE_CXX11_ABI=0"
 
 if [ "$(uname)" == "Darwin" ]; then
     TOOLSET=clang
@@ -51,6 +51,7 @@ sed -i.bak "s,cc,${TOOLSET},g" ${SRC_DIR}/project-config.jam
     toolset=${TOOLSET}-custom \
     include="${INCLUDE_PATH}" \
     cxxflags="${CXXFLAGS}" \
+    cxxstd=14 \
     linkflags="${LINKFLAGS}" \
     --layout=system \
     -j"${CPU_COUNT}" \
